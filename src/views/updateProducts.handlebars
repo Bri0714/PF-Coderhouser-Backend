@@ -1,0 +1,49 @@
+<h1>Update Product</h1>
+<a href="/api/products/manager">Manager</a>
+
+<div>
+  <h2>Title: {{this.title}}</h2>
+  <p>Description: {{this.description}}</p>
+  <p>Category: {{this.category}}</p>
+  <p>Stock: {{this.stock}}</p>
+  <p>Price: $ {{this.price}}</p>
+  <p>Owner: {{this.owner}}</p>
+</div>
+<hr />
+
+<form action="/api/products/update-products/{{this._id}}" method="POST">
+  <div>
+    <label for="description">Description:</label>
+    <textarea
+      name="description"
+      id="description"
+    >{{this.description}}</textarea>
+  </div>
+  <br>
+  <div>
+    <label for="category">Category:</label>
+    <input
+      type="text"
+      name="category"
+      id="category"
+      value="{{this.category}}"
+    />
+  </div>
+  <br>
+  <div>
+    <label for="stock">Stock:</label>
+    <input type="number" name="stock" id="stock" value="{{this.stock}}" />
+  </div>
+  <br>
+  <div>
+    <label for="price">Price:</label>
+    <input
+      type="number"
+      step="0.01"
+      name="price"
+      id="price"
+      value="{{this.price}}"
+    />
+  </div>
+  <button type="submit">Update</button>
+</form>

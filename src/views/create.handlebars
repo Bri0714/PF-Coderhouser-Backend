@@ -1,0 +1,38 @@
+<a href="/api/products">Products</a>
+|
+<a href="/api/products/manager">Manage products</a><br />
+<br>
+<form action="/api/session/logout" method="GET">
+  <button type="submit">Logout</button>
+</form>
+<h1>Create product</h1>
+
+<form action="/api/products" method="post">
+  Title:
+  <input type="text" name="title" placeholder="Title" required />
+  <br />
+  Description:
+  <input type="text" name="description" placeholder="Description" required /><br
+  />
+  Price:
+  <input type="number" name="price" placeholder="Price" required /><br />
+  Status: False
+  <input type="radio" name="status" value="false" />
+  True
+  <input type="radio" name="status" value="true" checked /><br />
+  Code:
+  <input type="text" name="code" placeholder="Unique code" required /><br />
+  Stock:
+  <input
+    type="number"
+    name="stock"
+    placeholder="Quantity of stock"
+    required
+  /><br />
+  Category:
+  <input type="text" name="category" placeholder="Category" required /><br />
+  Thumbnail:
+  <input type="text" name="thumbnail" placeholder="Image URL" required /><br />
+
+  <input type="submit" value="Register" />
+</form>

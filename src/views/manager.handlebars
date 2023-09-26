@@ -1,0 +1,58 @@
+<form action="/api/products" method="GET">
+  <input type="text" name="query" value="{{query}}" placeholder="Search..." />
+  <input type="hidden" name="limit" value="{{limit}}" />
+  <input type="hidden" name="sort" value="{{sort}}" />
+  <button type="submit">Search</button>
+
+  <a href="/api/products">Home</a>
+  |
+  <a href="/api/products">Remove filters</a>
+  |
+  <a href="/api/carts">Cart</a>
+  |
+  <a href="/api/products/create">Create product</a>
+</form>
+
+<form action="/api/session/logout" method="GET">
+  <h1>Welcome, {{userEmail}}!</h1>
+  <p>Role: {{userRole}}</p>
+  <button type="submit">Logout</button>
+</form>
+
+<div>
+  {{#each products.docs}}
+    <div>
+      <h2>{{this.title}}</h2>
+      <p>{{this.description}}</p>
+      <p>{{this.category}}</p>
+      <p>Stock: {{this.stock}}</p>
+      <h3>Price: $ {{this.price}}</h3>
+      <p>Owner: {{this.owner}}</p>
+
+      <form action="/api/products/update-product/{{this._id}}" method="GET">
+        <button type="submit">Update product</button>
+      </form>
+
+      <form action="/api/products/delete-product" method="POST">
+        <input type="hidden" name="productId" value="{{this._id}}" />
+        <input type="hidden" name="productOwner" value="{{this.owner}}" />
+        <input type="hidden" name="productTitle" value="{{this.title}}" />
+        <button type="submit">¡¡Remove product!!</button>
+      </form>
+
+    </div>
+    <hr />
+  {{/each}}
+</div>
+
+{{#if products.hasPrevPage}}
+  <a
+    href="/api/products?page={{products.prevPage}}&limit={{limit}}&sort={{sort}}&query={{query}}"
+  >Previous page</a>
+{{/if}}
+
+{{#if products.hasNextPage}}
+  <a
+    href="/api/products?page={{products.nextPage}}&limit={{limit}}&sort={{sort}}&query={{query}}"
+  >Next page</a>
+{{/if}}
